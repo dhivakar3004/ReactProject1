@@ -95,7 +95,7 @@ route.post("/employees",async function(request,response){
             let employeeid = request.body.employeeid;
             let status=request.body.status;
             await sequelize.query("update softlock set status = :status ,lastupdated =CURDATE() where employee_id = :employeeid",
-            {replacements: {employeeid: employeeid , status : status}, model:employees,mapToModel: true,type:sequelize.QueryTypes.UPDATE}
+            {replacements: {employeeid: employeeid , status : status}, model:softlock,mapToModel: true,type:sequelize.QueryTypes.UPDATE}
             ).then(function(){
                 response.status(200).json()
             })
